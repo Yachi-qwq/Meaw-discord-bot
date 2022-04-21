@@ -1,6 +1,5 @@
-# Kuso
-# https://discord.com/api/oauth2/authorize?client_id=958473430276132976&permissions=8&scope=bot
-#TOKEN = 'OTU4NDczNDMwMjc2MTMyOTc2.YkN18Q.47MFCFsBXGvP9dj0Z5uE2NE16QQ'
+# MeaMeaw
+# shippo discord bot on top.gg = https://top.gg/bot/933735281767612496
 from cgitb import text
 from imp import source_from_cache
 from importlib.resources import contents
@@ -30,7 +29,7 @@ from imp import source_from_cache
 
 
 #bot = 
-TOKEN = 'OTU4NDczNDMwMjc2MTMyOTc2.YkN18Q.47MFCFsBXGvP9dj0Z5uE2NE16QQ'
+TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 intetns_all = discord.Intents.all()
 #intents = discord.Intents(messages=True, guilds=True, members=True, presence=True)
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('-'),  description='online to help', intents = intetns_all, case_insensitive=True) 
