@@ -16,9 +16,7 @@ intetns = discord.Intents.all()
 bot = commands.Bot(bot = commands.Bot(command_prefix=commands.when_mentioned_or('.?')),  description='just online', intents = intetns)
 
 #bot token
-#TOKEN = 'OTMzNzM1MjgxNzY3NjEyNDk2.GhoDmh._xZusYTtLawV8WBcAZFGK5cTTO4E6grLjqLqP8' #real shippo
-#TOKEN = 'MTAwMzAwMjE2NDM0OTc4NDEyNQ.GmpVWw.wp1_FY1CFtLuGjkKkRMMqQrMxR1KsSnJqvRx_o' #shippo 2
-TOKEN = 'OTU4NDczNDMwMjc2MTMyOTc2.Gey7GT.sC9onua-nVVyeS74KTIZBI7-zH7eeBc0SGzcc4' #meaw only for testing || https://discord.com/api/oauth2/authorize?client_id=958473430276132976&permissions=8&scope=bot
+TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 # connecion
 @bot.event
