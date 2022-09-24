@@ -21,34 +21,19 @@ TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 # connecion
 @bot.event
 async def on_ready():
-
-    print("""
-
-     ▄█▀▀▀█▄███         ██
-    ▄██    ▀███
-    ▀███▄    ███████▄ ▀███ ▀████████▄▀████████▄  ▄██▀██▄
-      ▀█████▄██    ██   ██   ██   ▀██  ██   ▀██ ██▀   ▀██
-    ▄     ▀████    ██   ██   ██    ██  ██    ██ ██     ██
-    ██     ████    ██   ██   ██   ▄██  ██   ▄██ ██▄   ▄██
-    █▀█████▀████  ████▄████▄ ██████▀   ██████▀   ▀█████▀
-                             ██        ██
-                            ▄████▄    ▄████▄
-    """)
     print(f' ✅ {bot.user.name} is online and connected')
     print(f" ✅ {bot.user.name} is now awake to help her master")
     print("--------------------------------------------------------------------------------------------------------------------------")
-    print("Einladungslink =         https://discord.com/api/oauth2/authorize?client_id=933735281767612496&permissions=8&scope=bot")
-    print("started with Token:  " + TOKEN)
 
 ####################### THINGS
-#disconnect bot
+#close bot
 @bot.command(alias=["quit"])
 @commands.has_permissions(administrator=True)
 async def sleep(ctx):
     await ctx.send(f"{bot.user.name} was brought to bed by his master")
     time.sleep(2)
     await bot.close()
-    print(f'{bot.user.name} ------------------------------------------------------------- was brought to bed by this master Yachi ------------------------------------------------------------- ')
+    print(f'{bot.user.name} got shutdowned by {ctx.author.name}!')
 
 
 ####################### MODERATION
@@ -131,7 +116,7 @@ async def userinfo(ctx, *, user: discord.Member = None):
         await ctx.send(embed=embed)
 
 
-#serverinfp
+#serverinfo
 @bot.command(alias = ['si'])
 async def serverinfo(ctx):
     list_of_bots = [bot.mention for bot in ctx.guild.members if bot.bot]
@@ -153,12 +138,9 @@ async def serverinfo(ctx):
 
 
 
-
-
 #kick
 @bot.command(name="kick", pass_context=True)
-@commands.has_permissions(manage_roles=True, ban_members=True)
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(kick_user = True)
 async def kick(ctx, user: discord.Member=None, *, reason=None):
         emoji = discord.utils.get(bot.emojis, name='anime1')
         if user is None:
@@ -187,7 +169,7 @@ async def kick(ctx, user: discord.Member=None, *, reason=None):
 
 #ban
 @bot.command(pass_context=True)
-@commands.has_permissions(ban_members=True, administrator=True)
+@commands.has_permissions(ban_members=True)
 async def ban(ctx, user: discord.Member=None, *, reason=None):   #"No reason provided"
         emoji = discord.utils.get(bot.emojis, name='angryawoo')
         if user is None:
@@ -229,6 +211,7 @@ async def makechat(ctx, *, name=None):
 
 #make voice
 @bot.command() #voice
+@commands.has_permissions(administrator=True)
 async def makevoice(ctx, *, name=None):
     guild = ctx.message.guild
     if name == None:
@@ -318,6 +301,7 @@ async def delrole(ctx, user: discord.Member=None, *, role_name: discord.Role=Non
 
 #create role
 @bot.command() #working
+@commands.has_permissions(administrator=True)
 async def crole(ctx, *, name_role=None):
     guild = ctx.guild
     if get(ctx.guild.roles, name=name_role):
@@ -332,7 +316,7 @@ async def crole(ctx, *, name_role=None):
 
 #setnick
 @bot.command(pass_context=True)
-@commands.has_permissions(administrator=True, manage_nicknames=True, change_nickname=True)
+@commands.has_permissions(manage_nicknames=True, change_nickname=True)
 async def setnick(ctx, user: discord.Member=None, *, nick=None):
     if nick is None:
         await ctx.send(" ❌ please provide a nickname")
@@ -377,6 +361,7 @@ async def vunmute(ctx, user: discord.Member=None):
 
 #slowmode
 @bot.command()
+@commands.has_permissions(administrator=True)
 async def slowmode(ctx, sec: int=None):
     if sec is None:
         await ctx.send(":x: please add the amount of seconds for the slowmode or if you want to turn it off set the seconds to __0__")
@@ -404,9 +389,4 @@ async def unlock(ctx, channel: discord.TextChannel=None):
     await channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
     await ctx.send('**:unlock: Channel unlocked.**')
 
-#timeout
-@bot.command(pass_context =True)
-async def timeout2(ctx, member:discord.User=None, time=None):
-    user = await bot.fetch_user(member)
-    await user.timeout_for(time)
-    await ctx.send (f"{user} callate un rato anda {time}")
+bot.run(TOKEN)
