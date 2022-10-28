@@ -13,7 +13,7 @@ from discord.utils import get
 
 #commands line thing
 intetns = discord.Intents.all()
-bot = commands.Bot(bot = commands.Bot(command_prefix=commands.when_mentioned_or('.?')),  description='just online', intents = intetns)
+bot = commands.Bot(command_prefix='-',  description='just online', intents = intetns)
 
 #bot token
 TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
