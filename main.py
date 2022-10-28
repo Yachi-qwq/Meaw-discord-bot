@@ -140,7 +140,7 @@ async def serverinfo(ctx):
 
 #kick
 @bot.command(name="kick", pass_context=True)
-@commands.has_permissions(kick_user = True)
+@commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member=None, *, reason=None):
         emoji = discord.utils.get(bot.emojis, name='anime1')
         if user is None:
